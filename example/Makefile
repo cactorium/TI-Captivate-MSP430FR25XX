@@ -25,6 +25,9 @@ endif
 # cpu flags for target
 CPUFLAGS	=	-mmcu=$(MCU) -msmall -DTARGET_IS_MSP430FR2XX_4XX
 
+# include CapTIVate library
+include ../Makefile
+
 # cflags for target
 CFLAGS		:=	-ffunction-sections \
 				-Os \
@@ -42,7 +45,7 @@ LDFLAGS		:=	$(CPUFLAGS) \
 				$(LDFLAGS)
 				# -Tldscripts/$(MCU).ld -Tldscripts/$(MCU)_symbols.ld \
 
-LIBS		:= 
+LIBS		:= -lgcc
 
 CC				=	$(CROSS_COMPILE)gcc
 CXX				=	$(CROSS_COMPILE)g++
@@ -56,9 +59,6 @@ MKDIR			=	mkdir -p
 RM				=	rm -rf
 
 .PHONY: all
-
-# include CapTIVate library
-include ../Makefile
 
 # Makefile rules
 # do not edit
@@ -102,7 +102,7 @@ $(OBJDIR)/%.o: %.s
 	$(AS) -c -o $@ $(ASMFLAGS) $<
 
 $(ELF): $(OBJDIRS) $(OBJ) $(CAPTIVATE)
-	$(LD) -o $(ELF) $(OBJ) $(CAPTIVATE) $(LDFLAGS)
+	$(LD) -o $(ELF) $(OBJ) $(CAPTIVATE) $(LDFLAGS) $(LIBS)
 
 size: $(ELF)
 	$(SIZE_PROG) $(ELF)

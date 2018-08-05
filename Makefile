@@ -36,7 +36,7 @@ CAPTIVATE := captivate.a
 CAPTIVATE_OBJS := $(patsubst %.c,%.o,$(CAPTIVATE_SRCS))
 
 $(CAPTIVATE_OBJS): %.o: %.c
-	$(CC) -c -o $@ $(CFLAGS) $<
+	$(CC) -c -o $@ $(CFLAGS) $< $(LIBS) /usr/bin/../lib/gcc/msp430-elf/7.3.1/libgcc.a
 
 # captivate target
 $(CAPTIVATE): $(CAPTIVATE_OBJS)

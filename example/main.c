@@ -65,6 +65,7 @@ void main(void)
 	BSP_configureMCU();
 	__bis_SR_register(GIE);
 
+  /*
 	//
 	// Start the CapTIvate application
 	//
@@ -93,4 +94,5 @@ void main(void)
 		CAPT_appSleep();
 		
 	} // End background loop
+  */
 } // End main()
