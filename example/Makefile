@@ -37,7 +37,7 @@ CFLAGS		:=	-ffunction-sections \
 				$(INCLUDES) \
 				$(CFLAGS)
 
-CXXFLAGS	:=	$(CFLAGS) -std=gnu++14 $(CXXFLAGS)
+CXXFLAGS	:=	$(CFLAGS) $(CXXFLAGS)
 ASMFLAGS	:=	$(CFLAGS) $(ASMFLAGS)
 
 LDFLAGS		:=	$(CPUFLAGS) \
@@ -46,7 +46,7 @@ LDFLAGS		:=	$(CPUFLAGS) \
 				$(LDFLAGS)
 				# -Tldscripts/$(MCU).ld -Tldscripts/$(MCU)_symbols.ld \
 
-LIBS		=
+LIBS		:= 
 
 CC				=	$(CROSS_COMPILE)gcc
 CXX				=	$(CROSS_COMPILE)g++
@@ -100,8 +100,8 @@ $(OBJDIR)/%.o: %.S
 $(OBJDIR)/%.o: %.s
 	$(AS) -c -o $@ $(ASMFLAGS) $<
 
-$(ELF): $(OBJDIRS) $(OBJ)
-	$(LD) -o $(ELF) $(OBJ) $(LDFLAGS) $(LIBS)
+$(ELF): $(OBJDIRS) $(OBJ) $(CAPTIVATE)
+	$(LD) -o $(ELF) $(OBJ) $(CAPTIVATE) $(LDFLAGS)
 
 size: $(ELF)
 	$(SIZE_PROG) $(ELF)

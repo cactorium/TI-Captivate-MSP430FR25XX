@@ -84,8 +84,8 @@ volatile bool g_bMaxCountErrorFlag;
 //! CAPT_ISR is the Captivate peripheral interrupt service routine.
 //
 //*****************************************************************************
-#pragma vector=CAPTIVATE_VECTOR
-__interrupt void CAPT_ISR(void)
+//#pragma vector=CAPTIVATE_VECTOR
+void __attribute__ ((interrupt(CAPTIVATE_VECTOR))) CAPT_ISR(void)
 {
 	switch(__even_in_range(CAPT_getInterruptVector(), CAPT_IV_MAX_COUNT_ERROR))
 	{
