@@ -1,7 +1,7 @@
 # TI-Captivate-MSP430FR25XX
 (WIP) A copy of TI's CapTIVate software library for the MSP430FR25XX family, hopefully compilable using the standard MSP-GCC toolchain
 
-** NOTE: note currently working **
+**NOTE: not currently working**
 
 ## Description
 So this comes bundled with TI's CapTIVate design center thing, but it seems a lot more convenient to be able to add it as a Git submodule instead of having to deal with the library the whole time.
