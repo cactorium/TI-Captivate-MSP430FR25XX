@@ -25,13 +25,9 @@ endif
 # cpu flags for target
 CPUFLAGS	=	-mmcu=$(MCU) -msmall -DTARGET_IS_MSP430FR2XX_4XX
 
-# include CapTIVate library
-include ../Makefile
-
 # cflags for target
 CFLAGS		:=	-ffunction-sections \
 				-Os \
-				-std=gnu11 \
 				-Wall -Wextra -Wno-main -Werror \
 				$(CPUFLAGS) \
 				$(INCLUDES) \
@@ -58,6 +54,11 @@ STRIP			=	$(CROSS_COMPILE)strip
 
 MKDIR			=	mkdir -p
 RM				=	rm -rf
+
+.PHONY: all
+
+# include CapTIVate library
+include ../Makefile
 
 # Makefile rules
 # do not edit

@@ -3,10 +3,13 @@ mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))
 
 # Adds the Captivate library to the include and library paths
-LDFLAGS += -L$(mkfile_dir)/lib/mathlib/libraries/QmathLib.lib
-LDFLAGS += -L$(mkfile_dir)/lib/mathlib/libraries/IQmathLib.lib
-LDFLAGS += -L$(mkfile_dir)/lib/driverlib/MSP430FR2xx_4xx/libraries/driverlib.lib
-LDFLAGS += -L$(mkfile_dir)/lib/captivate/BASE/libraries/captivate_fr2522_family.lib
+#LDFLAGS += $(mkfile_dir)/lib/mathlib/libraries/QmathLib.lib
+LDFLAGS += $(mkfile_dir)/lib/mathlib/libraries/QmathLib_CCS_MPY32_5xx_6xx_CPUX_small_code_small_data.lib
+#LDFLAGS += $(mkfile_dir)/lib/mathlib/libraries/IQmathLib.lib
+LDFLAGS += $(mkfile_dir)/lib/mathlib/libraries/IQmathLib_CCS_MPY32_5xx_6xx_CPUX_small_code_small_data.lib
+# LDFLAGS += $(mkfile_dir)/lib/driverlib/MSP430FR2xx_4xx/libraries/driverlib.lib
+LDFLAGS += $(mkfile_dir)/lib/driverlib/MSP430FR2xx_4xx/libraries/driverlib_scsd.lib
+LDFLAGS += $(mkfile_dir)/lib/captivate/BASE/libraries/captivate_fr2522_family.lib
 
 INCLUDES += -I$(mkfile_dir)/lib
 INCLUDES += -I$(mkfile_dir)/lib/driverlib
@@ -33,7 +36,7 @@ CAPTIVATE := captivate.a
 CAPTIVATE_OBJS := $(patsubst %.c,%.o,$(CAPTIVATE_SRCS))
 
 $(CAPTIVATE_OBJS): %.o: %.c
-	$(CC) -c -o $@ $(CFLAGS) $< $(LDFLAGS)
+	$(CC) -c -o $@ $(CFLAGS) $<
 
 # captivate target
 $(CAPTIVATE): $(CAPTIVATE_OBJS)
