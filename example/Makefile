@@ -23,7 +23,7 @@ else
 endif
 
 # cpu flags for target
-CPUFLAGS	=	-mmcu=$(MCU) -DTARGET_IS_MSP430FR2XX_4XX
+CPUFLAGS	=	-mmcu=$(MCU) -msmall -DTARGET_IS_MSP430FR2XX_4XX
 
 # include CapTIVate library
 include ../Makefile

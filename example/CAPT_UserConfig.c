@@ -29,9 +29,6 @@
  * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
  * EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  * --/COPYRIGHT--*/
-
-<CDC_DATE>
-
 //*****************************************************************************
 // CAPT_UserConfig.c
 //
@@ -220,5 +217,11 @@ tCaptivateApplication g_uiApp =
     .state = eUIActive,
 	.pSensorList = &g_pCaptivateSensorArray[0],
     .ui8NrOfSensors = CAPT_SENSOR_COUNT,
-	<CDC_CAPTIVATE_SETTINGS>
+    .ui8AppLPM = LPM3_bits,
+    .bElementDataTxEnable = true,
+    .bSensorDataTxEnable = true,
+    .ui16ActiveModeScanPeriod = 50,
+    .ui16WakeOnProxModeScanPeriod = 100,
+    .ui16InactivityTimeout = 32,
+    .ui8WakeupInterval = 5,
 };
