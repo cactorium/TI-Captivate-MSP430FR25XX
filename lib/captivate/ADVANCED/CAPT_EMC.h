@@ -332,7 +332,7 @@ extern uint16_t CAPT_computeJitterFilter(uint16_t ui16Prev,
 //!		y, the accumulation of AX^2 and BX.
 //
 //*****************************************************************************
-static inline uint16_t CAPT_computePos2ndDegPoly(uint16_t ui16X, IQ31_t iq31A,
+extern uint16_t CAPT_computePos2ndDegPoly(uint16_t ui16X, IQ31_t iq31A,
 		IQ31_t iq31B);
 
 
